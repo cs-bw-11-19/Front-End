@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './register.css'
 
-const Register = () => {
+const Register = (props) => {
 const[form, setValues] = useState({
     username : '',
     password1 : '',
@@ -13,7 +13,7 @@ const[form, setValues] = useState({
 
 const handleChange = name => event => {
     setValues({ ...form, [name]: event.target.value });
-    console.log(event.target.value)
+    // console.log(event.target.value)
 };
 
 
@@ -22,7 +22,9 @@ onsubmit = e => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/api/registration/`, form)
 .then(res => {
+    props.history.push('/home')
     localStorage.setItem('key', res.data.key)
+    console.log(res.data)
 })
 }
 
