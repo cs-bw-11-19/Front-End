@@ -5,7 +5,7 @@ import { Button, Form, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './login.css'
 
-const Login = () => {
+const Login = (props) => {
     const[form, setValues] = useState({
         username : '',
         password : '',
@@ -22,6 +22,7 @@ const Login = () => {
         e.preventDefault();
         axios.post(`${process.env.REACT_APP_API_URL}/api/login/`, form)
     .then(res => {
+        props.history.push('/home')
         localStorage.setItem('key', res.data.key)
     })
     }
