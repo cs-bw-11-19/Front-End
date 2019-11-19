@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
+import { Button, Form, Input } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './login.css'
+
 const Login = () => {
     const[form, setValues] = useState({
         username : '',
@@ -24,11 +28,11 @@ const Login = () => {
     
     return(
         <div>
-            <form onSubmit={onsubmit}> 
-            <input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
-            <input value={form.password} placeholder ={'Enter your Password'} onChange={handleChange('password')} />
-            <button>Login</button>
-            </form >
+            <Form className='login-form' onSubmit={onsubmit}> 
+            <Input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
+            <Input value={form.password} placeholder ={'Enter your Password'} onChange={handleChange('password')} />
+            <Button className='login-button' color='primary'>Login</Button>
+            </Form >
         </div>
     )
     

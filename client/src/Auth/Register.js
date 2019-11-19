@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-
+import { Button, Form, Input } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './register.css'
 
 const Register = () => {
 const[form, setValues] = useState({
@@ -25,13 +27,13 @@ onsubmit = e => {
 }
 
 return(
-    <div>
-        <form onSubmit={onsubmit}> 
-        <input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
-        <input value={form.password} placeholder ={'Enter your Password'} onChange={handleChange('password')} />
-        <input value={form.password2} placeholder ={'Confirm your Password'} onChange={handleChange('password2')} />
-        <button>Register</button>
-        </form >
+    <div className='register'>
+        <Form className='register-form' onSubmit={onsubmit}> 
+        <Input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
+        <Input value={form.password} placeholder ={'Enter your Password'} onChange={handleChange('password')} />
+        <Input value={form.password2} placeholder ={'Confirm your Password'} onChange={handleChange('password2')} />
+        <Button className='register-button' color='primary'>Register</Button>
+        </Form >
     </div>
 )
 
