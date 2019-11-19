@@ -1,8 +1,7 @@
-  
 [build]
     base = "client/"
-    publish = "build/"
-    command = "yarn build"
+    publish = "client/build/"
+    command = "npm run build"
 
 [[redirects]]
     from = "/*"
@@ -10,4 +9,4 @@
     status = 200
 
 [context.production]
-    command = "yarn build"
+    command = "npm run build"
