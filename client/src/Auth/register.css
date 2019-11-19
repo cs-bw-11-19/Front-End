@@ -1,0 +1,16 @@
+.register-form{
+    margin-right:40%;
+    margin-left:40%;
+    padding-top:20%;
+}
+
+Input{
+    text-align:center;
+    margin-top:4%;
+}
+
+.register-button{
+    margin-right:10px;
+    margin-bottom:20px;
+    margin-top:10px;
+}
