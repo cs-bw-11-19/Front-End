@@ -8,4 +8,4 @@
     status = 200
 
 [context.production]
-yarn = "npm run build"
+command = "yarn build"
