@@ -20,7 +20,7 @@ const handleChange = name => event => {
 
 onsubmit = e => {
     e.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/api/registration`, form)
+    axios.post(`${process.env.REACT_APP_API_URL}/api/registration/`, form)
 .then(res => {
     localStorage.setItem('key', res.data.key)
 })

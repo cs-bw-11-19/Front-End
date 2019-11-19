@@ -20,7 +20,7 @@ const Login = () => {
     
     onsubmit = e => {
         e.preventDefault();
-        axios.post(`${process.env.REACT_APP_API_URL}/api/login`, form)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/login/`, form)
     .then(res => {
         localStorage.setItem('key', res.data.key)
     })
