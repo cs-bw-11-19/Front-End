@@ -1,0 +1,13 @@
+  
+[build]
+    base = "client/"
+    publish = "build/"
+    command = "yarn build"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+[context.production]
+    command = "yarn build"
