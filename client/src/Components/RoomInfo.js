@@ -10,7 +10,7 @@ const RoomInfo = () => {
         .then(res => {
             console.log('res',res)
         })
-        .err(err=> {
+        .error(err => {
             console.log(err)
         })
         
