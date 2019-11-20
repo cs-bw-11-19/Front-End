@@ -6,12 +6,17 @@ const RoomInfo = () => {
     const [info, setInfo] = useState([]);
 
     useEffect(() =>{
-        AxiosWithAuth()
-        .get(`${process.env.REACT_APP_API_URL}/api/adv/init/`)
+        token = localStorage.getItem('key')
+        axios
+        .get(`${process.env.REACT_APP_API_URL}/api/adv/init/`,{
+            headers:{
+                Authorization: `Token ${token} `
+            }
+        })
         .then(res => {
             console.log('res',res)
         })
-        setInfo(res.data)
+        // setInfo(res.data)
     }, [])
 
     return(
