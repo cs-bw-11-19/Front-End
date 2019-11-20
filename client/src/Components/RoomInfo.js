@@ -16,7 +16,7 @@ const RoomInfo = () => {
 
     return(
         <div>
-            <p>{info.roomname}</p>
+            {/* <p>{info.roomname}</p> */}
         </div>
     )
 }
