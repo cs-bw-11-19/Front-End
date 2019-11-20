@@ -15,13 +15,17 @@ const RoomInfo = () => {
         })
         .then(res => {
             console.log('res',res)
+            setInfo(res.data)
         })
-        // setInfo(res.data)
     }, [])
 
     return(
         <div>
-            {/* <p>{info.roomname}</p> */}
+            <p>{info.title}</p>
+            <p>{info.description}</p>
+            {info.players.map(player =>{
+                return player
+            })}
         </div>
     )
 }
