@@ -1,0 +1,21 @@
+
+.room-container{
+    display:flex;
+    margin-top:40%
+}
+
+.display{
+    margin-right:20%;
+    margin-left:2%;
+    border: 1px solid black;
+    width:40%;
+}
+
+.directions{
+    width:35%;
+    border: 1px solid black;
+}
+
+.dirbutton{
+    margin-right:2%;
+}
