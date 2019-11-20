@@ -6,7 +6,7 @@ const RoomInfo = () => {
     const [info, setInfo] = useState([]);
 
     useEffect(() =>{
-        token = localStorage.getItem('key')
+        const token = localStorage.getItem('key');
         axios
         .get(`${process.env.REACT_APP_API_URL}/api/adv/init/`,{
             headers:{
