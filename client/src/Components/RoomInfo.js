@@ -31,10 +31,10 @@ const RoomInfo = () => {
             headers:{
                 Authorization: `Token ${token} `
             }
+        })
         .then(res =>{
             console.log('move response', res)
             setInfo(res.data)
-        })
         })
     }
 
