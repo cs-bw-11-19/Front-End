@@ -8,7 +8,10 @@ const RoomInfo = () => {
         AxiosWithAuth()
         .get(`${process.env.REACT_APP_API_URL}/api/adv/init/`)
         .then(res => {
-            console.log('res',res.data)
+            console.log('res',res)
+        })
+        .err(err=> {
+            console.log(err)
         })
         
     }, [])
