@@ -23,9 +23,9 @@ const RoomInfo = () => {
         <div>
             <p>{info.title}</p>
             <p>{info.description}</p>
-            {info.players.map(player =>{
+            {/* {info.players.map(player =>{
                 return player
-            })}
+            })} */}
         </div>
     )
 }
