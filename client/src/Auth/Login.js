@@ -30,6 +30,7 @@ const Login = (props) => {
     return(
         <div>
             <Form className='login-form' onSubmit={onsubmit}> 
+            <h1 className='login-header'>Login</h1>
             <Input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
             <Input value={form.password} type='password' placeholder ={'Enter your Password'} onChange={handleChange('password')} />
             <Button className='login-button' color='primary'>Login</Button>

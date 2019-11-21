@@ -19,8 +19,10 @@ const RoomInfo = () => {
         })
         .then(res => {
             console.log('res1',res)
-            console.log('players',res.data.players)
-            setInfo(res.data)
+            console.log('room-info',res.data.room)
+            console.log('players',res.data.room.players)
+            setInfo(res.data.room)
+            localStorage.setItem('room',res.data.room.id)
         })
     }, [])
 
@@ -39,11 +41,13 @@ const RoomInfo = () => {
         })
         .then(res =>{
             console.log('move response', res)
+            console.log('room-info',res.data.room)
             setInfo(res.data)
+            localStorage.setItem('room',res.data.id)
             
         })
     }
-
+    // console.log('room info',info.room)
 
     // const getRooms = () => {
     //     const token = localStorage.getItem('key')
@@ -63,7 +67,7 @@ const RoomInfo = () => {
         // })
 
     // }
-    if (!info.players){
+    if (info.title=== undefined){
         return(<p>Loading...</p>)
     }
     else 
@@ -78,10 +82,10 @@ const RoomInfo = () => {
             <h4>Description</h4>
             <p>{info.description}</p>
             <h4>Other Players</h4>
-            {/* <p>{info.players.map(player =>{
+            <p>{info.players.map(player =>{
                 return <p>{player}</p>
-            })} */}
-            {/* </p> */}
+            })}
+            </p>
             </div>
         <div className='directions'>
             <h2>Directions</h2>

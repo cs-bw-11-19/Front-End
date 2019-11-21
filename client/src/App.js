@@ -6,12 +6,14 @@ import Login from './Auth/Login'
 import Landing from './Components/Landing'
 import PrivateRoute from './Components/PrivateRoute'
 import Home from './Components/Home'
+import NavBar from './Components/NavBar'
 
 
 function App() {
   return (
     <div className="App">
       <div>
+      <NavBar />
       <Route exact path='/' component={Landing} />
       <Route path='/register' component={Register} />
       <Route path='/login' component={Login} />
