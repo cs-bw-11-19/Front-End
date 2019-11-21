@@ -4,6 +4,7 @@ import AxiosWithAuth from '../Utils/AxiosWithAuth'
 import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/roominfo.css'
+import Map from './Map'
 
 const RoomInfo = () => {
     const [info, setInfo] = useState([]);
@@ -11,13 +12,13 @@ const RoomInfo = () => {
     useEffect(() =>{
         const token = localStorage.getItem('key');
         axios
-        .get(`${process.env.REACT_APP_API_URL}/api/adv/init/`,{
+        .get(`${process.env.REACT_APP_API_URL}/api/adv/init`,{
             headers:{
                 Authorization: `Token ${token} `
             }
         })
         .then(res => {
-            console.log('res',res)
+            console.log('res1',res)
             console.log('players',res.data.players)
             setInfo(res.data)
         })
@@ -31,7 +32,7 @@ const RoomInfo = () => {
         }
 
         axios
-        .post(`${process.env.REACT_APP_API_URL}/api/adv/move`, movement, {
+        .post(`${process.env.REACT_APP_API_URL}/api/adv/move/`, movement, {
             headers:{
                 Authorization: `Token ${token} `
             }
@@ -42,12 +43,34 @@ const RoomInfo = () => {
             
         })
     }
+
+
+    // const getRooms = () => {
+    //     const token = localStorage.getItem('key')
+
+
+    //     axios
+    //     .get(`${process.env.REACT_APP_API_URL}/api/adv/rooms/`,  {
+    //         headers:{
+    //             Authorization: `Token ${token} `
+    //         }
+    //         })
+    //     .then(res => {
+    //         console.log('rooms',res)
+    //     })
+        // .error(err => {
+        //     console.log(err)
+        // })
+
+    // }
     if (!info.players){
         return(<p>Loading...</p>)
     }
     else 
     return(
         <div className ='room-container'>
+            {/* <Map /> */}
+            {/* <button onClick={getRooms}>get rooms</button> */}
             <div className='display'>
             <h4>Room</h4>
             <br></br>
@@ -55,10 +78,10 @@ const RoomInfo = () => {
             <h4>Description</h4>
             <p>{info.description}</p>
             <h4>Other Players</h4>
-            <p>{info.players.map(player =>{
+            {/* <p>{info.players.map(player =>{
                 return <p>{player}</p>
-            })}
-            </p>
+            })} */}
+            {/* </p> */}
             </div>
         <div className='directions'>
             <h2>Directions</h2>
