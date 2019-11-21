@@ -30,7 +30,8 @@ onsubmit = e => {
 
 return(
     <div className='register'>
-        <Form className='register-form' onSubmit={onsubmit}> 
+        <Form className='register-form' onSubmit={onsubmit}>
+            <h1 className='register-header'>Sign Up</h1> 
         <Input value={form.username} placeholder ={'Enter your Username'} onChange={handleChange('username')} />
         <Input value={form.password1} type='password' placeholder ={'Enter your Password'} onChange={handleChange('password1')} />
         <Input value={form.password2} type='password' placeholder ={'Confirm your Password'} onChange={handleChange('password2')} />
