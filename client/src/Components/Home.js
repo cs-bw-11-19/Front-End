@@ -5,7 +5,7 @@ import Map from './Map'
 const Home = () => {
     return(
         <div>
-            <Map />
+            {/* <Map /> */}
             <RoomInfo />
         </div>
     )

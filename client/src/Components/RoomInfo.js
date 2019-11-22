@@ -72,12 +72,11 @@ const RoomInfo = () => {
     }
     else 
     return(
+        <div>
+        <Map currentRoom={info.id}/>
         <div className ='room-container'>
-            {/* <Map /> */}
-            {/* <button onClick={getRooms}>get rooms</button> */}
             <div className='display'>
             <h4>Room</h4>
-            <br></br>
             <p>{info.title}</p>
             <h4>Description</h4>
             <p>{info.description}</p>
@@ -89,10 +88,11 @@ const RoomInfo = () => {
             </div>
         <div className='directions'>
             <h2>Directions</h2>
-            <Button className= 'dirbutton' onClick={e => move('n')}>North</Button>
-            <Button className= 'dirbutton' onClick={e => move('s')}>South</Button>
+            <Button className= 'dirbutton' onClick={e => move('s')}>North</Button>
+            <Button className= 'dirbutton' onClick={e => move('n')}>South</Button>
             <Button className= 'dirbutton' onClick={e => move('e')}>East</Button>
             <Button className= 'dirbutton' onClick={e =>  move('w')}>West</Button>
+        </div>
         </div>
         </div>
     )
