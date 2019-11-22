@@ -3,7 +3,6 @@ import { Graph } from "react-d3-graph";
 import axios from 'axios';
 
 const Map = (props) => {
-    console.log(props.currentRoom)
     const [rooms, setRooms] = useState([]);
 
     useEffect(() =>{
@@ -15,13 +14,10 @@ const Map = (props) => {
             }
         })
         .then(res => {
-            console.log('res',res.data)
             setRooms(res.data)
         })
     }, [])
 
-    console.log('links',rooms.links)
-    console.log('nodes',rooms.nodes)
 
     
  
@@ -41,14 +37,12 @@ if(rooms.nodes && rooms.links){
     newNodes = roomMap
 }
 
-console.log(newNodes)
 
 const display = {
     nodes: newNodes.rooms,
     links: rooms.links,     
 };
 
-console.log(display)
 
 
 // const myConfig = {
@@ -71,7 +65,7 @@ const myConfig = {
     "directed": false,
     "focusAnimationDuration": 0.75,
     "focusZoom": 1,
-    "height": 400,
+    "height": 500,
     "highlightDegree": 1,
     "highlightOpacity": 1,
     "linkHighlightBehavior": false,

@@ -18,9 +18,6 @@ const RoomInfo = () => {
             }
         })
         .then(res => {
-            console.log('res1',res)
-            console.log('room-info',res.data.room)
-            console.log('players',res.data.room.players)
             setInfo(res.data.room)
             localStorage.setItem('room',res.data.room.id)
         })
@@ -32,6 +29,7 @@ const RoomInfo = () => {
         const movement = {
             direction : e
         }
+        // console.log('movement', movement)
 
         axios
         .post(`${process.env.REACT_APP_API_URL}/api/adv/move/`, movement, {
@@ -40,10 +38,9 @@ const RoomInfo = () => {
             }
         })
         .then(res =>{
-            console.log('move response', res)
-            console.log('room-info',res.data.room)
             setInfo(res.data)
-            localStorage.setItem('room',res.data.id)
+        
+            
             
         })
     }
@@ -67,7 +64,7 @@ const RoomInfo = () => {
         // })
 
     // }
-    if (info.title=== undefined){
+    if (info.title=== undefined && info.id == undefined){
         return(<p>Loading...</p>)
     }
     else 
@@ -84,14 +81,14 @@ const RoomInfo = () => {
             <p>{info.players.map(player =>{
                 return <p>{player}</p>
             })}
-            </p>
+            </p> 
             </div>
         <div className='directions'>
             <h2>Directions</h2>
-            <Button className= 'dirbutton' onClick={e => move('s')}>North</Button>
-            <Button className= 'dirbutton' onClick={e => move('n')}>South</Button>
-            <Button className= 'dirbutton' onClick={e => move('e')}>East</Button>
-            <Button className= 'dirbutton' onClick={e =>  move('w')}>West</Button>
+            <Button color='primary' className= 'dirbutton' onClick={e => move('s')}>North</Button>
+            <Button color='primary' className= 'dirbutton' onClick={e => move('n')}>South</Button>
+            <Button color='primary' className= 'dirbutton' onClick={e => move('e')}>East</Button>
+            <Button color='primary' className= 'dirbutton' onClick={e =>  move('w')}>West</Button>
         </div>
         </div>
         </div>
