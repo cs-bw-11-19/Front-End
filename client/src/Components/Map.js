@@ -2,8 +2,10 @@ import React,{useEffect, useState} from 'react'
 import { Graph } from "react-d3-graph"; 
 import axios from 'axios';
 
-const Map = () => {
+const Map = (props) => {
+    console.log(props.currentRoom)
     const [rooms, setRooms] = useState([]);
+
     useEffect(() =>{
         const token = localStorage.getItem('key');
         axios
@@ -14,34 +16,37 @@ const Map = () => {
         })
         .then(res => {
             console.log('res',res.data)
-            // console.log('links', res.data.links)
             setRooms(res.data)
         })
     }, [])
-// console.log(rooms)
-// const mappedrooms = rooms.map(room => {
-//     console.log(room.pk)
-//     return room
+
     console.log('links',rooms.links)
     console.log('nodes',rooms.nodes)
-// })
 
-// const links = rooms.links.map(link=> {
-//     console.log(link)
-//     return link
-
-// })
-
-// let data = rooms.map(room =>{
-//     console.log(room)
-//     return room
-// })
+    
  
-const display = {
-    nodes: rooms.nodes,
-    links: rooms.links,
-};
+let newNodes = []
+if(rooms.nodes && rooms.links){
+    
+    let roomMap = {
+        rooms:rooms.nodes.map(room => {
+                return {
+                    ...room, color: (props.currentRoom  !== room.id) || 'blue'
+                }
+        }), 
 
+        
+    };
+
+    newNodes = roomMap
+}
+
+console.log(newNodes)
+
+const display = {
+    nodes: newNodes.rooms,
+    links: rooms.links,     
+};
 
 console.log(display)
 
@@ -66,61 +71,123 @@ const myConfig = {
     "directed": false,
     "focusAnimationDuration": 0.75,
     "focusZoom": 1,
-    "height": 600,
+    "height": 400,
     "highlightDegree": 1,
     "highlightOpacity": 1,
-    "linkHighlightBehavior": true,
+    "linkHighlightBehavior": false,
     "maxZoom": 8,
     "minZoom": 0.1,
-    "nodeHighlightBehavior": true,
+    "nodeHighlightBehavior": false,
     "panAndZoom": false,
     "staticGraph": false,
-    "staticGraphWithDragAndDrop": true,
-    "width": 1000,
+    "staticGraphWithDragAndDrop": false,
+    "width": 800,
     "d3": {
       "alphaTarget": 0.05,
-      "gravity": -400,
-      "linkLength": 180,
+      "gravity": -100,
+      "linkLength": 100,
       "linkStrength": 1
     },
     "node": {
-      "color": "black",
+      "color": "#d3d3d3",
       "fontColor": "black",
-      "fontSize": 20,
+      "fontSize": 8,
       "fontWeight": "normal",
       "highlightColor": "SAME",
-      "highlightFontSize": 12,
-      "highlightFontWeight": "bold",
-      "highlightStrokeColor": "blue",
+      "highlightFontSize": 8,
+      "highlightFontWeight": "normal",
+      "highlightStrokeColor": "SAME",
       "highlightStrokeWidth": "SAME",
-      "labelProperty": "name",
+      "labelProperty": "id",
       "mouseCursor": "pointer",
       "opacity": 1,
       "renderLabel": true,
-      "size": 5000,
+      "size": 200,
       "strokeColor": "none",
-      "strokeWidth": 2,
+      "strokeWidth": 1.5,
       "svg": "",
       "symbolType": "circle"
     },
     "link": {
       "color": "#d3d3d3",
       "fontColor": "black",
-      "fontSize": 12,
+      "fontSize": 8,
       "fontWeight": "normal",
-      "highlightColor": "blue",
+      "highlightColor": "#d3d3d3",
       "highlightFontSize": 8,
-      "highlightFontWeight": "bold",
+      "highlightFontWeight": "normal",
       "labelProperty": "label",
       "mouseCursor": "pointer",
       "opacity": 1,
-      "renderLabel": true,
-      "semanticStrokeWidth": true,
+      "renderLabel": false,
+      "semanticStrokeWidth": false,
       "strokeWidth": 1.5,
       "markerHeight": 6,
       "markerWidth": 6
     }
   }
+// {
+//     "automaticRearrangeAfterDropNode": false,
+//     "collapsible": false,
+//     "directed": false,
+//     "focusAnimationDuration": 0.75,
+//     "focusZoom": 1,
+//     "height": 600,
+//     "highlightDegree": 1,
+//     "highlightOpacity": 1,
+//     "linkHighlightBehavior": true,
+//     "maxZoom": 8,
+//     "minZoom": 0.1,
+//     "nodeHighlightBehavior": true,
+//     "panAndZoom": false,
+//     "staticGraph": false,
+//     "staticGraphWithDragAndDrop": true,
+//     "width": 1000,
+//     "d3": {
+//       "alphaTarget": 0.05,
+//       "gravity": -400,
+//       "linkLength": 180,
+//       "linkStrength": 1
+//     },
+//     "node": {
+//       "color": "black",
+//       "fontColor": "black",
+//       "fontSize": 20,
+//       "fontWeight": "normal",
+//       "highlightColor": "SAME",
+//       "highlightFontSize": 12,
+//       "highlightFontWeight": "bold",
+//       "highlightStrokeColor": "blue",
+//       "highlightStrokeWidth": "SAME",
+//       "labelProperty": "name",
+//       "mouseCursor": "pointer",
+//       "opacity": 1,
+//       "renderLabel": true,
+//       "size": 5000,
+//       "strokeColor": "none",
+//       "strokeWidth": 2,
+//       "svg": "",
+//       "symbolType": "circle"
+//     },
+    
+//     "link": {
+//       "color": "#d3d3d3",
+//       "fontColor": "black",
+//       "fontSize": 12,
+//       "fontWeight": "normal",
+//       "highlightColor": "blue",
+//       "highlightFontSize": 8,
+//       "highlightFontWeight": "bold",
+//       "labelProperty": "label",
+//       "mouseCursor": "pointer",
+//       "opacity": 1,
+//       "renderLabel": true,
+//       "semanticStrokeWidth": true,
+//       "strokeWidth": 1.5,
+//       "markerHeight": 6,
+//       "markerWidth": 6
+//     }
+//   }
 
 
 if (rooms.nodes===undefined && rooms.links===undefined ){
